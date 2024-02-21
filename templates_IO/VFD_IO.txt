@@ -1,0 +1,2 @@
+MM_VFD_IO_Val_SpeedFdbk := VFD_IO.Val_SpeedFdbk;
+MM_VFD_IO_Sts_RunningFwd := VFD_IO.Sts_RunningFwd;

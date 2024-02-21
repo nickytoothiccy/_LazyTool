@@ -1,0 +1,2 @@
+MM_PIC_IO_Val_CVOut := PIC_IO.Val_CVOut;
+\ControlModules.PIC_IO_Pos := MM_PIC_IO_Pos;

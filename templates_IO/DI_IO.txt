@@ -1,0 +1,2 @@
+\ControlModules.DI_IO_Raw := MM_DI_IO_Raw;
+MM_DI_IO_Out := DI_IO.Out;

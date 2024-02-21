@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="35.00" TargetName="DI_01" TargetType="Routine" TargetSubType="FBD" ContainsContext="true" ExportDate="Thu Jan 18 08:39:35 2024" ExportOptions="References NoRawData L5KData DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans">
+<Controller Use="Context" Name="PT7_R1">
+<DataTypes Use="Context">
+</DataTypes>
+<AddOnInstructionDefinitions Use="Context">
+<AddOnInstructionDefinition Name="AZ_PDI_Config" Revision="1.0" ExecutePrescan="false" ExecutePostscan="false" ExecuteEnableInFalse="false" CreatedDate="2023-08-28T15:16:35.743Z" CreatedBy="USWRROCKWELLAIO\khpn904" EditedDate="2023-08-28T15:38:44.466Z" EditedBy="USWRROCKWELLAIO\khpn904" SoftwareRevision="v35.00">
+<Parameters>
+<Parameter Name="EnableIn" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Input - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="EnableOut" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Output - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="Cmd_Init" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Cmd_DisableSim" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="ToCM_Target" TagType="Base" DataType="BOOL" Usage="InOut" Radix="Decimal" Required="true" Visible="true" Constant="false"/>
+<Parameter Name="Sav_Target" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="ToCM_DisableSim" TagType="Base" DataType="BOOL" Usage="InOut" Radix="Decimal" Required="true" Visible="true" Constant="false"/>
+<Parameter Name="Horn" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Sav_Audible" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="FromCM_AlmSts" TagType="Base" DataType="BOOL" Usage="InOut" Radix="Decimal" Required="true" Visible="true" Constant="false"/>
+</Parameters>
+<LocalTags>
+<LocalTag Name="i" DataType="DINT" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+</LocalTags>
+<Routines>
+<Routine Name="Logic" Type="ST">
+<STContent>
+<Line Number="0">
+<![CDATA[/*	Initialize relevant parameters for the Control Module]]>
+</Line>
+<Line Number="1">
+<![CDATA[ 		Usage: 	Inp_Init can be triggered to re-initialize]]>
+</Line>
+<Line Number="2">
+<![CDATA[				the saved parameters]]>
+</Line>
+<Line Number="3">
+<![CDATA[			   	Inp_Init clears itself after execution 		*/]]>
+</Line>
+<Line Number="4">
+<![CDATA[if Cmd_Init then]]>
+</Line>
+<Line Number="5">
+<![CDATA[	ToCM_Target := Sav_Target;]]>
+</Line>
+<Line Number="6">
+<![CDATA[	i := 0;]]>
+</Line>
+<Line Number="7">
+<![CDATA[	Cmd_DisableSim := 1;]]>
+</Line>
+<Line Number="8">
+<![CDATA[	]]>
+</Line>
+<Line Number="9">
+<![CDATA[	Cmd_Init := 0;]]>
+</Line>
+<Line Number="10">
+<![CDATA[end_if;]]>
+</Line>
+<Line Number="11">
+<![CDATA[]]>
+</Line>
+<Line Number="12">
+<![CDATA[if Cmd_DisableSim then]]>
+</Line>
+<Line Number="13">
+<![CDATA[	]]>
+</Line>
+<Line Number="14">
+<![CDATA[	if i = 0 then]]>
+</Line>
+<Line Number="15">
+<![CDATA[		ToCM_DisableSim := 1;]]>
+</Line>
+<Line Number="16">
+<![CDATA[	elsif i = 1 then]]>
+</Line>
+<Line Number="17">
+<![CDATA[		ToCM_DisableSim := 0;]]>
+</Line>
+<Line Number="18">
+<![CDATA[	end_if;]]>
+</Line>
+<Line Number="19">
+<![CDATA[	i := i + 1;]]>
+</Line>
+<Line Number="20">
+<![CDATA[	]]>
+</Line>
+<Line Number="21">
+<![CDATA[	if i >= 2 then ]]>
+</Line>
+<Line Number="22">
+<![CDATA[		Cmd_DisableSim := 0;]]>
+</Line>
+<Line Number="23">
+<![CDATA[	end_if;]]>
+</Line>
+<Line Number="24">
+<![CDATA[end_if;]]>
+</Line>
+<Line Number="25">
+<![CDATA[]]>
+</Line>
+<Line Number="26">
+<![CDATA[/*	Enable the Horn whenever CM Alarm is configured as]]>
+</Line>
+<Line Number="27">
+<![CDATA[	audible and alarm is on									*/]]>
+</Line>
+<Line Number="28">
+<![CDATA[Horn := (Sav_Audible & FromCM_AlmSts);]]>
+</Line>
+</STContent>
+</Routine>
+</Routines>
+</AddOnInstructionDefinition>
+</AddOnInstructionDefinitions>
+<AlarmDefinitions Use="Context">
+<DatatypeAlarmDefinition Name="P_DISCRETE_INPUT">
+<MemberAlarmDefinition Name="Alm_IOFault" Input=".Sts_IOFault" ConditionType="TRIP" Limit="0.0" Severity="500" OnDelay="0" OffDelay="0" ShelveDuration="0" MaxShelveDuration="0" Deadband="0.0" Required="false"
+ AlarmSetOperIncluded="true" AlarmSetRollupIncluded="true" AckRequired="true" Latched="false" EvaluationPeriod="500 millisecond" Expression="= 1" IsTemplate="true">
+<AlarmConfig>
+<Messages>
+<Message Type="ADM">
+<Text Lang="en-US">
+<![CDATA[/*S:0 %.@Description*/: IO fault]]>
+</Text>
+</Message>
+</Messages>
+</AlarmConfig>
+</MemberAlarmDefinition>
+<MemberAlarmDefinition Name="Alm_TgtDisagree" Input=".Sts_TgtDisagree" ConditionType="TRIP" Limit="0.0" Severity="500" OnDelay="0" OffDelay="0" ShelveDuration="0" MaxShelveDuration="0" Deadband="0.0" Required="false"
+ AlarmSetOperIncluded="true" AlarmSetRollupIncluded="true" AckRequired="true" Latched="false" EvaluationPeriod="500 millisecond" Expression="= 1" IsTemplate="true">
+<AlarmConfig>
+<Messages>
+<Message Type="ADM">
+<Text Lang="en-US">
+<![CDATA[/*S:0 %.@Description*/: Target disagree]]>
+</Text>
+</Message>
+</Messages>
+</AlarmConfig>
+</MemberAlarmDefinition>
+</DatatypeAlarmDefinition>
+</AlarmDefinitions>
+<Tags Use="Context">
+<Tag Name="DI_01" TagType="Base" DataType="P_DISCRETE_INPUT" Constant="false" ExternalAccess="Read/Write">
+<AlarmConditions>
+<AlarmCondition Name="Alm_IOFault" AlarmConditionDefinition="Alm_IOFault" Input=".Sts_IOFault" ConditionType="TRIP" Limit="0.0" Severity="500" OnDelay="0" OffDelay="0" ShelveDuration="0" MaxShelveDuration="0" Deadband="0.0"
+ Used="false" AlarmSetOperIncluded="true" AlarmSetRollupIncluded="true" InFault="false" AckRequired="true" Latched="false" ProgAck="false" OperAck="false" ProgReset="false" OperReset="false" ProgSuppress="false"
+ OperSuppress="false" ProgUnsuppress="false" OperUnsuppress="false" OperShelve="false" ProgUnshelve="false" OperUnshelve="false" ProgDisable="false" OperDisable="false" ProgEnable="false" OperEnable="false" AlarmCountReset="false"
+ EvaluationPeriod="500 millisecond" Expression="= 1">
+<AlarmConfig/>
+</AlarmCondition>
+<AlarmCondition Name="Alm_TgtDisagree" AlarmConditionDefinition="Alm_TgtDisagree" Input=".Sts_TgtDisagree" ConditionType="TRIP" Limit="0.0" Severity="500" OnDelay="0" OffDelay="0" ShelveDuration="0" MaxShelveDuration="0" Deadband="0.0"
+ Used="false" AlarmSetOperIncluded="true" AlarmSetRollupIncluded="true" InFault="false" AckRequired="true" Latched="false" ProgAck="false" OperAck="false" ProgReset="false" OperReset="false" ProgSuppress="false"
+ OperSuppress="false" ProgUnsuppress="false" OperUnsuppress="false" OperShelve="false" ProgUnshelve="false" OperUnshelve="false" ProgDisable="false" OperDisable="false" ProgEnable="false" OperEnable="false" AlarmCountReset="false"
+ EvaluationPeriod="500 millisecond" Expression="= 1">
+<AlarmConfig/>
+</AlarmCondition>
+</AlarmConditions>
+<Data Format="L5K">
+<![CDATA[[302009603,0,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0,1,1,0,0,0,0,0,0,0,1141899776
+		,0,0,1,[-1608912342,0,0],0,[0],[0],[-1608912342,0,0],[0,0,0],1,[-1608912342,0,0],[0,0,0],0,0,[0],[0],[0],[0],[0,2500,0],[0,0,0]]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="P_DISCRETE_INPUT">
+<DataValueMember Name="EnableIn" DataType="BOOL" Value="1"/>
+<DataValueMember Name="EnableOut" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Inp_InitializeReq" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_PVData" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_ModFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_ChanFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_PVUncertain" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_PVNotify" DataType="SINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Inp_Target" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Gate" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Inp_Reset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_AllowDisable" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Cfg_AllowShelve" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Cfg_NoSubstPV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_SubstTracksTarget" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_NormTextVis" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Cfg_HasMoreObj" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_Debounce" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Cfg_GateDly" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Cfg_TgtDisagreeOffDly" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Cfg_TgtDisagreeOnDly" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Cfg_CnfrmReqd" DataType="SINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Set_VirtualPV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PCmd_Virtual" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PCmd_Physical" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PCmd_Reset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="XCmd_Reset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="XCmd_ResetAckAll" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Out" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Out_InpPV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Out_Reset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_Initialized" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Sts_PVUncertain" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_SubstPV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_InpPV" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Sts_Virtual" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SrcQ_IO" DataType="SINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="SrcQ" DataType="SINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="Sts_eSts" DataType="SINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Sts_eFault" DataType="SINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Sts_eNotify" DataType="SINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Sts_eNotifyAll" DataType="SINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Sts_eNotifyIOFault" DataType="SINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Sts_eNotifyTgtDisagree" DataType="SINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Sts_UnackAlmCount" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Sts_MaintByp" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_Err" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_ErrGateDly" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_ErrTgtDisagreeOffDly" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_ErrTgtDisagreeOnDly" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_ErrDebounce" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_ErrAlm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_Alm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_AlmInh" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_IOFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_TgtDisagreeCmp" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_TgtDisagreeGate" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Sts_TgtDisagree" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_RdyAck" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_RdyReset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="XRdy_Reset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="XRdy_ResetAckAll" DataType="BOOL" Value="0"/>
+</Structure>
+</Data>
+</Tag>
+</Tags>
+<Programs Use="Context">
+<Program Use="Context" Name="ControlModules">
+<Tags Use="Context">
+<Tag Name="DI_01_ChanFault" TagType="Base" DataType="BOOL" Radix="Decimal" Usage="Public" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="DI_01_Config" TagType="Base" DataType="AZ_PDI_Config" Usage="Public" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[[3,2]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="AZ_PDI_Config">
+<DataValueMember Name="EnableIn" DataType="BOOL" Value="1"/>
+<DataValueMember Name="EnableOut" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Cmd_Init" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cmd_DisableSim" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sav_Target" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Horn" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sav_Audible" DataType="BOOL" Value="0"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="DI_01_ModFault" TagType="Base" DataType="BOOL" Radix="Decimal" Usage="Public" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="DI_01_Raw" TagType="Base" DataType="BOOL" Radix="Decimal" Usage="Public" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+</Tags>
+<Routines Use="Context">
+<Routine Use="Target" Name="DI_01" Type="FBD">
+<FBDContent SheetSize="E - 34 x 44 in" SheetOrientation="Landscape">
+<Sheet Number="1">
+<IRef ID="0" X="420" Y="300" Operand="DI_01_ChanFault" HideDesc="false"/>
+<IRef ID="1" X="420" Y="280" Operand="DI_01_ModFault" HideDesc="false"/>
+<IRef ID="2" X="420" Y="200" Operand="DI_01_Raw" HideDesc="false"/>
+<Block Type="PDI" ID="3" X="540" Y="140" Operand="DI_01" VisiblePins="Inp_PVData Inp_ModFault Inp_ChanFault Inp_Target Inp_Gate Out Sts_Err Sts_Alm Sts_TgtDisagree BusObj" HideDesc="false">
+<Array Name="BusObj" Operand="0"/>
+</Block>
+<AddOnInstruction Name="AZ_PDI_Config" ID="4" X="20" Y="360" Operand="DI_01_Config" VisiblePins="ToCM_Target ToCM_DisableSim FromCM_AlmSts">
+<InOutParameter Name="FromCM_AlmSts" Argument="DI_01.Sts_Alm"/>
+<InOutParameter Name="ToCM_DisableSim" Argument="DI_01.Cfg_NoSubstPV"/>
+<InOutParameter Name="ToCM_Target" Argument="DI_01.Inp_Target"/>
+</AddOnInstruction>
+<Wire FromID="0" ToID="3" ToParam="Inp_ChanFault"/>
+<Wire FromID="1" ToID="3" ToParam="Inp_ModFault"/>
+<Wire FromID="2" ToID="3" ToParam="Inp_PVData"/>
+<TextBox ID="5" X="0" Y="0" Width="0">
+<Text>
+<![CDATA[--------------------------------------------
+Discrete Input
+
+Object: AZ_PDI
+Ver: 1
+--------------------------------------------]]>
+</Text>
+</TextBox>
+</Sheet>
+</FBDContent>
+</Routine>
+</Routines>
+</Program>
+</Programs>
+</Controller>
+</RSLogix5000Content>

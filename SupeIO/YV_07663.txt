@@ -1,0 +1,3 @@
+\ControlModules.YV_07663_Pos1 := MM_YV_07663_Pos1;
+\ControlModules.YV_07663_Pos2 := MM_YV_07663_Pos2;
+MM_YV_07663_Out := \ControlModules.YV_07663_Out;

@@ -1,0 +1,5 @@
+\ControlModules.AI_IO_Raw := MM_AI_IO_AI;
+MM_AI_IO_Cfg_InpRawMin := AI_IO.Cfg_InpRawMin;
+MM_AI_IO_Cfg_InpRawMax := AI_IO.Cfg_InpRawMax;
+MM_AI_IO_Cfg_PVEUMin := AI_IO.Cfg_PVEUMin;
+MM_AI_IO_Cfg_PVEUMax := AI_IO.Cfg_PVEUMax;

@@ -1,0 +1,1031 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="35.00" TargetName="YV_03217" TargetType="Routine" TargetSubType="FBD" ContainsContext="true" Owner="wme" ExportDate="Wed Feb 07 14:38:07 2024" ExportOptions="References NoRawData L5KData DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans">
+<Controller Use="Context" Name="PT3_R">
+<DataTypes Use="Context">
+</DataTypes>
+<AddOnInstructionDefinitions Use="Context">
+<AddOnInstructionDefinition Name="AZ_PD4SD_Config" Revision="1.0" ExecutePrescan="false" ExecutePostscan="false" ExecuteEnableInFalse="false" CreatedDate="2023-02-20T17:04:32.569Z" CreatedBy="USWRROCKWELLAIO\khpn904" EditedDate="2023-02-20T21:55:29.121Z" EditedBy="USWRROCKWELLAIO\khpn904" SoftwareRevision="v35.00">
+<Parameters>
+<Parameter Name="EnableIn" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Input - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="EnableOut" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Output - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="ToCM_NumStates" TagType="Base" DataType="SINT" Usage="InOut" Radix="Decimal" Required="true" Visible="true" Constant="false"/>
+<Parameter Name="ToCM_FailTime" TagType="Base" DataType="REAL" Usage="InOut" Radix="Float" Required="true" Visible="true" Constant="false"/>
+<Parameter Name="ToCM_ePwrUpState" TagType="Base" DataType="SINT" Usage="InOut" Radix="Decimal" Required="true" Visible="true" Constant="false"/>
+<Parameter Name="Sav_NumStates" TagType="Base" DataType="SINT" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="SINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Sav_FailTime" TagType="Base" DataType="REAL" Usage="Input" Radix="Float" Required="false" Visible="false" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Sav_ePwrUpState" TagType="Base" DataType="SINT" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="SINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Cmd_Init" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Horn" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Sav_Audible" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="FromCM_Alm" TagType="Base" DataType="BOOL" Usage="InOut" Radix="Decimal" Required="true" Visible="true" Constant="false"/>
+<Parameter Name="ToCM_FeedbackA" TagType="Base" DataType="SINT" Usage="InOut" Radix="Decimal" Required="true" Visible="true" Constant="false"/>
+<Parameter Name="ToCM_FeedbackB" TagType="Base" DataType="SINT" Usage="InOut" Radix="Decimal" Required="true" Visible="true" Constant="false"/>
+<Parameter Name="ToCM_UseFeedbackA" TagType="Base" DataType="SINT" Usage="InOut" Radix="Decimal" Required="true" Visible="true" Constant="false"/>
+<Parameter Name="ToCM_UseFeedbackB" TagType="Base" DataType="SINT" Usage="InOut" Radix="Decimal" Required="true" Visible="true" Constant="false"/>
+<Parameter Name="Sav_FeedbackA" TagType="Base" DataType="SINT" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="SINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Sav_FeedbackB" TagType="Base" DataType="SINT" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="SINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Sav_UseFdbkB" TagType="Base" DataType="SINT" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="SINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Sav_UseFdbkA" TagType="Base" DataType="SINT" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="SINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+</Parameters>
+<LocalTags/>
+<Routines>
+<Routine Name="Logic" Type="ST">
+<STContent>
+<Line Number="0">
+<![CDATA[/*	Initialize relevant parameters for the Control Module]]>
+</Line>
+<Line Number="1">
+<![CDATA[ 		Usage: 	Inp_Init can be triggered to re-initialize]]>
+</Line>
+<Line Number="2">
+<![CDATA[				the saved parameters]]>
+</Line>
+<Line Number="3">
+<![CDATA[			   	Inp_Init clears itself after execution 		*/]]>
+</Line>
+<Line Number="4">
+<![CDATA[if Cmd_Init then]]>
+</Line>
+<Line Number="5">
+<![CDATA[	ToCM_NumStates := Sav_NumStates;]]>
+</Line>
+<Line Number="6">
+<![CDATA[	ToCM_UseFeedbackA := Sav_UseFdbkA;]]>
+</Line>
+<Line Number="7">
+<![CDATA[	ToCM_UseFeedbackB := Sav_UseFdbkB;]]>
+</Line>
+<Line Number="8">
+<![CDATA[	ToCM_FeedbackA := Sav_FeedbackA;]]>
+</Line>
+<Line Number="9">
+<![CDATA[	ToCM_FeedbackB := Sav_FeedbackB;]]>
+</Line>
+<Line Number="10">
+<![CDATA[	ToCM_FailTime := Sav_FailTime;]]>
+</Line>
+<Line Number="11">
+<![CDATA[	ToCM_ePwrUpState := Sav_ePwrUpState;]]>
+</Line>
+<Line Number="12">
+<![CDATA[	Cmd_Init := 0;]]>
+</Line>
+<Line Number="13">
+<![CDATA[end_if;]]>
+</Line>
+<Line Number="14">
+<![CDATA[]]>
+</Line>
+<Line Number="15">
+<![CDATA[/*	Enable the Horn whenever CM Alarm is configured as]]>
+</Line>
+<Line Number="16">
+<![CDATA[	audible and alarm is on									*/]]>
+</Line>
+<Line Number="17">
+<![CDATA[Horn := (Sav_Audible & FromCM_Alm);]]>
+</Line>
+</STContent>
+</Routine>
+</Routines>
+</AddOnInstructionDefinition>
+</AddOnInstructionDefinitions>
+<AlarmDefinitions Use="Context">
+<DatatypeAlarmDefinition Name="P_DISCRETE_4STATE">
+<MemberAlarmDefinition Name="Alm_EqpFault" Input=".Sts_EqpFault" ConditionType="TRIP" Limit="0.0" Severity="500" OnDelay="0" OffDelay="0" ShelveDuration="480" MaxShelveDuration="480" Deadband="0.0" Required="false"
+ AlarmSetOperIncluded="true" AlarmSetRollupIncluded="true" AckRequired="true" Latched="false" EvaluationPeriod="500 millisecond" Expression="= 1" IsTemplate="true">
+<AlarmConfig>
+<Messages>
+<Message Type="ADM">
+<Text Lang="en-US">
+<![CDATA[/*S:0 %.@Description*/: Device-reported equipment fault]]>
+</Text>
+</Message>
+</Messages>
+</AlarmConfig>
+</MemberAlarmDefinition>
+<MemberAlarmDefinition Name="Alm_Fail" Input=".Sts_Fail" ConditionType="TRIP" Limit="0.0" Severity="500" OnDelay="0" OffDelay="0" ShelveDuration="480" MaxShelveDuration="480" Deadband="0.0" Required="false"
+ AlarmSetOperIncluded="true" AlarmSetRollupIncluded="true" AckRequired="true" Latched="false" EvaluationPeriod="500 millisecond" Expression="= 1" IsTemplate="true">
+<AlarmConfig>
+<Messages>
+<Message Type="ADM">
+<Text Lang="en-US">
+<![CDATA[/*S:0 %.@Description*/: Fail to achieve state]]>
+</Text>
+</Message>
+</Messages>
+</AlarmConfig>
+</MemberAlarmDefinition>
+<MemberAlarmDefinition Name="Alm_IntlkTrip" Input=".Sts_IntlkTrip" ConditionType="TRIP" Limit="0.0" Severity="500" OnDelay="0" OffDelay="0" ShelveDuration="480" MaxShelveDuration="480" Deadband="0.0" Required="false"
+ AlarmSetOperIncluded="true" AlarmSetRollupIncluded="true" AckRequired="true" Latched="false" EvaluationPeriod="500 millisecond" Expression="= 1" IsTemplate="true">
+<AlarmConfig>
+<Messages>
+<Message Type="ADM">
+<Text Lang="en-US">
+<![CDATA[/*S:0 %.@Description*/: Interlock trip]]>
+</Text>
+</Message>
+</Messages>
+</AlarmConfig>
+</MemberAlarmDefinition>
+<MemberAlarmDefinition Name="Alm_IOFault" Input=".Sts_IOFault" ConditionType="TRIP" Limit="0.0" Severity="500" OnDelay="0" OffDelay="0" ShelveDuration="480" MaxShelveDuration="480" Deadband="0.0" Required="false"
+ AlarmSetOperIncluded="true" AlarmSetRollupIncluded="true" AckRequired="true" Latched="false" EvaluationPeriod="500 millisecond" Expression="= 1" IsTemplate="true">
+<AlarmConfig>
+<Messages>
+<Message Type="ADM">
+<Text Lang="en-US">
+<![CDATA[/*S:0 %.@Description*/: I/O fault]]>
+</Text>
+</Message>
+</Messages>
+</AlarmConfig>
+</MemberAlarmDefinition>
+</DatatypeAlarmDefinition>
+</AlarmDefinitions>
+<Tags Use="Context">
+<Tag Name="YV_03217" TagType="Base" DataType="P_DISCRETE_4STATE" Constant="false" ExternalAccess="Read/Write">
+<AlarmConditions>
+<AlarmCondition Name="Alm_EqpFault" AlarmConditionDefinition="Alm_EqpFault" Input=".Sts_EqpFault" ConditionType="TRIP" Limit="0.0" Severity="500" OnDelay="0" OffDelay="0" ShelveDuration="480" MaxShelveDuration="480" Deadband="0.0"
+ Used="false" AlarmSetOperIncluded="true" AlarmSetRollupIncluded="true" InFault="false" AckRequired="true" Latched="false" ProgAck="false" OperAck="false" ProgReset="false" OperReset="false" ProgSuppress="false"
+ OperSuppress="false" ProgUnsuppress="false" OperUnsuppress="false" OperShelve="false" ProgUnshelve="false" OperUnshelve="false" ProgDisable="false" OperDisable="false" ProgEnable="false" OperEnable="false" AlarmCountReset="false"
+ EvaluationPeriod="500 millisecond" Expression="= 1">
+<AlarmConfig/>
+</AlarmCondition>
+<AlarmCondition Name="Alm_Fail" AlarmConditionDefinition="Alm_Fail" Input=".Sts_Fail" ConditionType="TRIP" Limit="0.0" Severity="350" OnDelay="0" OffDelay="0" ShelveDuration="480" MaxShelveDuration="480" Deadband="0.0"
+ Used="true" AlarmSetOperIncluded="true" AlarmSetRollupIncluded="true" InFault="false" AckRequired="true" Latched="false" ProgAck="false" OperAck="false" ProgReset="false" OperReset="false" ProgSuppress="false"
+ OperSuppress="false" ProgUnsuppress="false" OperUnsuppress="false" OperShelve="false" ProgUnshelve="false" OperUnshelve="false" ProgDisable="false" OperDisable="false" ProgEnable="false" OperEnable="false" AlarmCountReset="false"
+ EvaluationPeriod="500 millisecond" Expression="= 1">
+<AlarmConfig/>
+</AlarmCondition>
+<AlarmCondition Name="Alm_IOFault" AlarmConditionDefinition="Alm_IOFault" Input=".Sts_IOFault" ConditionType="TRIP" Limit="0.0" Severity="350" OnDelay="0" OffDelay="0" ShelveDuration="480" MaxShelveDuration="480" Deadband="0.0"
+ Used="true" AlarmSetOperIncluded="true" AlarmSetRollupIncluded="true" InFault="false" AckRequired="true" Latched="false" ProgAck="false" OperAck="false" ProgReset="false" OperReset="false" ProgSuppress="false"
+ OperSuppress="false" ProgUnsuppress="false" OperUnsuppress="false" OperShelve="false" ProgUnshelve="false" OperUnshelve="false" ProgDisable="false" OperDisable="false" ProgEnable="false" OperEnable="false" AlarmCountReset="false"
+ EvaluationPeriod="500 millisecond" Expression="= 1">
+<AlarmConfig/>
+</AlarmCondition>
+<AlarmCondition Name="Alm_IntlkTrip" AlarmConditionDefinition="Alm_IntlkTrip" Input=".Sts_IntlkTrip" ConditionType="TRIP" Limit="0.0" Severity="350" OnDelay="0" OffDelay="0" ShelveDuration="480" MaxShelveDuration="480" Deadband="0.0"
+ Used="true" AlarmSetOperIncluded="true" AlarmSetRollupIncluded="true" InFault="false" AckRequired="true" Latched="false" ProgAck="false" OperAck="false" ProgReset="false" OperReset="false" ProgSuppress="false"
+ OperSuppress="false" ProgUnsuppress="false" OperUnsuppress="false" OperShelve="false" ProgUnshelve="false" OperUnshelve="false" ProgDisable="false" OperDisable="false" ProgEnable="false" OperEnable="false" AlarmCountReset="false"
+ EvaluationPeriod="500 millisecond" Expression="= 1">
+<AlarmConfig/>
+</AlarmCondition>
+</AlarmConditions>
+<Description>
+<![CDATA[R6 NaOH Inlet Bleed Valve]]>
+</Description>
+<Librarys>
+<Library>
+<![CDATA[raP-5_10]]>
+</Library>
+</Librarys>
+<Labels>
+<Label>
+<![CDATA[YV-03217]]>
+</Label>
+<Label Operand=".XCMD_ST0">
+<![CDATA[To Drain]]>
+</Label>
+<Label Operand=".XCMD_ST1">
+<![CDATA[To Reactor]]>
+</Label>
+<Label Operand=".STS_ST0">
+<![CDATA[To Drain]]>
+</Label>
+<Label Operand=".STS_ST1">
+<![CDATA[To Reactor]]>
+</Label>
+<Label Operand=".STS_IOFAULT">
+<![CDATA[I/O Fault]]>
+</Label>
+<Label Operand=".STS_FAIL">
+<![CDATA[Position Fail]]>
+</Label>
+<Label Operand=".STS_INTLKTRIP">
+<![CDATA[Interlock Trip]]>
+</Label>
+</Labels>
+<Instructions>
+<Instruction>
+<![CDATA[PD4SD]]>
+</Instruction>
+</Instructions>
+<Areas>
+<Area>
+<![CDATA[PT3]]>
+</Area>
+</Areas>
+<URLs>
+<URL>
+<![CDATA[ ]]>
+</URL>
+</URLs>
+<Data Format="L5K">
+<![CDATA[[117964299,0,0,2,15,0,15,2,15,4,15,8,0,0,0,0,0,4,0,8,0,1610613184,0.00000000e+000,0.00000000e+000,0.00000000e+000
+		,0.00000000e+000,0.00000000e+000,2.00000000e+000,0.00000000e+000,0,0,568590464,96,2,2,0,0,1,0,1,0
+		,0,0,0,0,0,0,67401728,0,[0,0,0],[0,0,0],[0,0,0],[0,0,0],0,0,0,0,0,0,0,0,[113603,0,682264608,34,128,568590464,1989],0,3,1,2,[3236561,2000
+		,0],[3236561,0,0],2697216,[3177311,0,0],0,260,[0],[0],[0],[0],[0],[0],0,0,0.00000000e+000,0,0,1,[0]]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="P_DISCRETE_4STATE">
+<DataValueMember Name="EnableIn" DataType="BOOL" Value="1"/>
+<DataValueMember Name="EnableOut" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Inp_InitializeReq" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_OwnerCmd" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Inp_AFdbkData" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Inp_BFdbkData" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_CFdbkData" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_DFdbkData" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_EqpFaultData" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_IOFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_St0PermOK" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Inp_St0NBPermOK" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Inp_St1PermOK" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Inp_St1NBPermOK" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Inp_St2PermOK" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Inp_St2NBPermOK" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Inp_St3PermOK" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Inp_St3NBPermOK" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Inp_IntlkOK" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Inp_NBIntlkOK" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Inp_IntlkAvailable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_IntlkTripInh" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_RdyReset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Hand" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Ovrd" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_OvrdCmd" DataType="SINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Inp_ExtInh" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_HornInh" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Reset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_AllowDisable" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Cfg_AllowShelve" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Cfg_NumStates" DataType="SINT" Radix="Decimal" Value="2"/>
+<DataValueMember Name="Cfg_bSt0OutWrite" DataType="SINT" Radix="Binary" Value="2#0000_1111"/>
+<DataValueMember Name="Cfg_bSt0OutState" DataType="SINT" Radix="Binary" Value="2#0000_0000"/>
+<DataValueMember Name="Cfg_bSt1OutWrite" DataType="SINT" Radix="Binary" Value="2#0000_1111"/>
+<DataValueMember Name="Cfg_bSt1OutState" DataType="SINT" Radix="Binary" Value="2#0000_0010"/>
+<DataValueMember Name="Cfg_bSt2OutWrite" DataType="SINT" Radix="Binary" Value="2#0000_1111"/>
+<DataValueMember Name="Cfg_bSt2OutState" DataType="SINT" Radix="Binary" Value="2#0000_0100"/>
+<DataValueMember Name="Cfg_bSt3OutWrite" DataType="SINT" Radix="Binary" Value="2#0000_1111"/>
+<DataValueMember Name="Cfg_bSt3OutState" DataType="SINT" Radix="Binary" Value="2#0000_1000"/>
+<DataValueMember Name="Cfg_bSt0FdbkCheck" DataType="SINT" Radix="Binary" Value="2#0000_0000"/>
+<DataValueMember Name="Cfg_bSt0FdbkState" DataType="SINT" Radix="Binary" Value="2#0000_0000"/>
+<DataValueMember Name="Cfg_bSt1FdbkCheck" DataType="SINT" Radix="Binary" Value="2#0000_0000"/>
+<DataValueMember Name="Cfg_bSt1FdbkState" DataType="SINT" Radix="Binary" Value="2#0000_0000"/>
+<DataValueMember Name="Cfg_bSt2FdbkCheck" DataType="SINT" Radix="Binary" Value="2#0000_0000"/>
+<DataValueMember Name="Cfg_bSt2FdbkState" DataType="SINT" Radix="Binary" Value="2#0000_0100"/>
+<DataValueMember Name="Cfg_bSt3FdbkCheck" DataType="SINT" Radix="Binary" Value="2#0000_0000"/>
+<DataValueMember Name="Cfg_bSt3FdbkState" DataType="SINT" Radix="Binary" Value="2#0000_1000"/>
+<DataValueMember Name="Cfg_ePwrUpState" DataType="SINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Cfg_St0onShed" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Cfg_HasSt0PermObj" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_HasSt1PermObj" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_HasSt2PermObj" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_HasSt3PermObj" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_HasIntlkObj" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_HasMoreObj" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_OperSt0Prio" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_ExtSt0Prio" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_OCmdResets" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_XCmdResets" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_OvrdPermIntlk" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_ShedOnFail" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Cfg_ShedOnIOFault" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Cfg_ShedOnEqpFault" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Cfg_HornOnChange" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_HasOper" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Cfg_HasOperLocked" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Cfg_HasProg" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Cfg_HasProgLocked" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Cfg_HasExt" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_HasMaint" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Cfg_HasMaintOoS" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Cfg_OvrdOverLock" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Cfg_ExtOverLock" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_ProgPwrUp" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Cfg_ProgNormal" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Cfg_PCmdPriority" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_PCmdProgAsLevel" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_PCmdLockAsLevel" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_ExtAcqAsLevel" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_OutAPulseTime" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Cfg_OutBPulseTime" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Cfg_OutCPulseTime" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Cfg_OutDPulseTime" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Cfg_StartHornTime" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Cfg_VirtualFdbkTime" DataType="REAL" Radix="Float" Value="2.0"/>
+<DataValueMember Name="Cfg_FailTime" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Cfg_CnfrmReqd" DataType="SINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="PSet_Owner" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="PCmd_Virtual" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PCmd_Physical" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PCmd_St0" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PCmd_St1" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PCmd_St2" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PCmd_St3" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PCmd_Reset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PCmd_Prog" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PCmd_Oper" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PCmd_Lock" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PCmd_Unlock" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PCmd_Normal" DataType="BOOL" Value="0"/>
+<DataValueMember Name="XCmd_St0" DataType="BOOL" Value="0"/>
+<DataValueMember Name="XCmd_St1" DataType="BOOL" Value="0"/>
+<DataValueMember Name="XCmd_St2" DataType="BOOL" Value="0"/>
+<DataValueMember Name="XCmd_St3" DataType="BOOL" Value="0"/>
+<DataValueMember Name="XCmd_Acq" DataType="BOOL" Value="0"/>
+<DataValueMember Name="XCmd_Rel" DataType="BOOL" Value="0"/>
+<DataValueMember Name="XCmd_Reset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="XCmd_ResetAckAll" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Out_AData" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Out_BData" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Out_CData" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Out_DData" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Out_HornData" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Out_Reset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Out_OwnerSts" DataType="DINT" Radix="Decimal" Value="568590464"/>
+<DataValueMember Name="Sts_Initialized" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Sts_St0" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Sts_St1" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_St2" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_St3" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_Moving" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_Horn" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_Virtual" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SrcQ_IO" DataType="SINT" Radix="Decimal" Value="2"/>
+<DataValueMember Name="SrcQ" DataType="SINT" Radix="Decimal" Value="2"/>
+<DataValueMember Name="Sts_eFdbk" DataType="SINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Sts_eCmd" DataType="SINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Sts_eSts" DataType="SINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="Sts_eFault" DataType="SINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Sts_eOutState" DataType="SINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="Sts_eNotify" DataType="SINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Sts_eNotifyAll" DataType="SINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Sts_eNotifyIOFault" DataType="SINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Sts_eNotifyFail" DataType="SINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Sts_eNotifyIntlkTrip" DataType="SINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Sts_eNotifyEqpFault" DataType="SINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Sts_UnackAlmCount" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Sts_eSrc" DataType="INT" Radix="Decimal" Value="34"/>
+<DataValueMember Name="Sts_bSrc" DataType="INT" Radix="Decimal" Value="128"/>
+<DataValueMember Name="Sts_Available" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Sts_IntlkAvailable" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Sts_Bypass" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_BypActive" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_MaintByp" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_NotRdy" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_NrdyCfgErr" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_NrdyEqpFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_NrdyFail" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_NrdyIntlk" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_NrdyIOFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_NrdyOoS" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_NrdyPerm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_NrdyPrioSt0" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_Err" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_ErrAlm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_ErrOutAPulseTime" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_ErrOutBPulseTime" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_ErrOutCPulseTime" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_ErrOutDPulseTime" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_ErrVirtualFdbkTime" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_ErrFailTime" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_Hand" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_OoS" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_Maint" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_Ovrd" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_Ext" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_Prog" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Sts_ProgLocked" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_Oper" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_OperLocked" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_ProgOperSel" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Sts_ProgOperLock" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_Normal" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Sts_ExtReqInh" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Sts_ProgReqInh" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_MAcqRcvd" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_CmdConflict" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_Alm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_AlmInh" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_IOFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_Fail" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_IntlkTrip" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_EqpFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_RdyAck" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_RdyReset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="XRdy_Acq" DataType="BOOL" Value="0"/>
+<DataValueMember Name="XRdy_Rel" DataType="BOOL" Value="0"/>
+<DataValueMember Name="XRdy_St0" DataType="BOOL" Value="0"/>
+<DataValueMember Name="XRdy_St1" DataType="BOOL" Value="0"/>
+<DataValueMember Name="XRdy_St2" DataType="BOOL" Value="0"/>
+<DataValueMember Name="XRdy_St3" DataType="BOOL" Value="0"/>
+<DataValueMember Name="XRdy_Reset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="XRdy_ResetAckAll" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Val_Owner" DataType="DINT" Radix="Decimal" Value="0"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="YV_03217_Intlk_0" TagType="Base" DataType="P_INTERLOCK" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[YV-03217 Interlocks]]>
+</Description>
+<Librarys>
+<Library>
+<![CDATA[raP-5_00]]>
+</Library>
+</Librarys>
+<Labels>
+<Label>
+<![CDATA[Interlocks]]>
+</Label>
+<Label Operand=".CFG_TYPEDESC00">
+<![CDATA[Sft:Safety]]>
+</Label>
+<Label Operand=".CFG_TYPEDESC01">
+<![CDATA[Prt:Protective]]>
+</Label>
+<Label Operand=".CFG_TYPEDESC02">
+<![CDATA[Ele:Electrical]]>
+</Label>
+<Label Operand=".CFG_TYPEDESC03">
+<![CDATA[Dvc:Device]]>
+</Label>
+<Label Operand=".CFG_TYPEDESC04">
+<![CDATA[Opr:Operational]]>
+</Label>
+<Label Operand=".CFG_TYPEDESC05">
+<![CDATA[Mec:Mechanical]]>
+</Label>
+<Label Operand=".CFG_TYPEDESC06">
+<![CDATA[Gen:General]]>
+</Label>
+<Label Operand=".CFG_TYPEDESC07">
+<![CDATA[Pro:Process]]>
+</Label>
+<Label Operand=".INP_INTLK00">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK01">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK02">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK03">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK04">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK05">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK06">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK07">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK08">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK09">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK10">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK11">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK12">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK13">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK14">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK15">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK16">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK17">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK18">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK19">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK20">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK21">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK22">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK23">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK24">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK25">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK26">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK27">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK28">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK29">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK30">
+<![CDATA[ ]]>
+</Label>
+<Label Operand=".INP_INTLK31">
+<![CDATA[ ]]>
+</Label>
+</Labels>
+<Instructions>
+<Instruction>
+<![CDATA[PINTLK]]>
+</Instruction>
+</Instructions>
+<Areas>
+<Area>
+<![CDATA[PT3]]>
+</Area>
+</Areas>
+<URLs>
+<URL>
+<![CDATA[ ]]>
+</URL>
+</URLs>
+<Data Format="L5K">
+<![CDATA[[809238539,0,0,0,0,0,0,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,-1,0,0,0,0,0,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,12,[1,2,4,8,16,32
+		,64,128],0,[0,0,0,0,96,29],-1,0,0,0]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="P_INTERLOCK">
+<DataValueMember Name="EnableIn" DataType="BOOL" Value="1"/>
+<DataValueMember Name="EnableOut" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Inp_InitializeReq" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk00" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk01" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk02" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk03" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk04" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk05" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk06" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk07" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk08" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk09" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk10" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk11" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk12" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk13" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk14" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk15" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk16" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk17" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk18" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk19" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk20" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk21" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk22" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk23" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk24" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk25" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk26" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk27" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk28" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk29" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk30" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Intlk31" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_IOFault" DataType="DINT" Radix="Binary" Value="2#0000_0000_0000_0000_0000_0000_0000_0000"/>
+<DataValueMember Name="Inp_Available" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Inp_BypActive" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_LatchDefeat" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Reset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_OKState" DataType="DINT" Radix="Binary" Value="2#0000_0000_0000_0000_0000_0000_0000_0000"/>
+<DataValueMember Name="Cfg_Latched" DataType="DINT" Radix="Binary" Value="2#0000_0000_0000_0000_0000_0000_0000_0000"/>
+<DataValueMember Name="Cfg_StopOnly" DataType="DINT" Radix="Binary" Value="2#0000_0000_0000_0000_0000_0000_0000_0000"/>
+<DataValueMember Name="Cfg_Bypassable" DataType="DINT" Radix="Binary" Value="2#0000_0000_0000_0000_0000_0000_0000_0000"/>
+<DataValueMember Name="Cfg_HasNav" DataType="DINT" Radix="Binary" Value="2#0000_0000_0000_0000_0000_0000_0000_0000"/>
+<DataValueMember Name="Cfg_eType00" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType01" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType02" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType03" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType04" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType05" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType06" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType07" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType08" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType09" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType10" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType11" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType12" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType13" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType14" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType15" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType16" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType17" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType18" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType19" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType20" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType21" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType22" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType23" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType24" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType25" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType26" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType27" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType28" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType29" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType30" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_eType31" DataType="SINT" Radix="Decimal" Value="6"/>
+<DataValueMember Name="Cfg_HasType" DataType="SINT" Radix="Binary" Value="2#1111_1111"/>
+<DataValueMember Name="Cfg_TypeDesc00" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_TypeDesc01" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_TypeDesc02" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_TypeDesc03" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_TypeDesc04" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_TypeDesc05" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_TypeDesc06" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_TypeDesc07" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_BankID" DataType="INT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Cfg_HasMoreObj" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_CnfrmReqd" DataType="SINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="PCmd_Reset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Out_Reset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Val_FirstUpBankID" DataType="INT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Val_FirstUpIndex" DataType="INT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Sts_Initialized" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Sts_IntlkOK" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Sts_NBIntlkOK" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Sts_Available" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Sts_IntlkTripInh" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_BypActive" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_FirstUpDetect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_BankIDError" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_LatchDefeat" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_RdyReset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_LatchMask" DataType="DINT" Radix="Binary" Value="2#0000_0000_0000_0000_0000_0000_0000_0000"/>
+<DataValueMember Name="Sts_BypassMask" DataType="DINT" Radix="Binary" Value="2#1111_1111_1111_1111_1111_1111_1111_1111"/>
+<DataValueMember Name="Sts_Intlk" DataType="DINT" Radix="Binary" Value="2#0000_0000_0000_0000_0000_0000_0000_0000"/>
+<DataValueMember Name="Sts_FirstOut" DataType="DINT" Radix="Binary" Value="2#0000_0000_0000_0000_0000_0000_0000_0000"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="YV_03217_ValveStats" TagType="Base" DataType="P_VALVE_STATISTICS" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[YV-03217 Stats]]>
+</Description>
+<Areas>
+<Area>
+<![CDATA[PT3]]>
+</Area>
+</Areas>
+<Data Format="L5K">
+<![CDATA[[536875019,5.00000000e+000,5.00000000e+000,3.05677500e+004,2.05000000e+001,9.77931335e+002
+		,1.71181808e+002,0.00000000e+000,0.00000000e+000,1.09716663e-002,1.25000000e+000,0.00000000e+000
+		,0.00000000e+000,5.90000000e+001,2.07550011e+001,1.08930559e+001,0.00000000e+000,0.00000000e+000
+		,1.04161110e-002,7.50000000e-001,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
+		,0.00000000e+000,91,90,1,0,0,0,0,1,[0,2147483647,0],[0,2147483647,0],[-1073491445,2147483647,327750],[0,2147483647
+		,0],90,91,0,1,9779,0,207,0,6.16254500e+005,3.92150000e+004,0.00000000e+000,0,[0,2147483647,0],[4145896
+		,2147483647,37498],[3236811,2147483647,197998],[4128146,2147483647,39498],[-1073491445,2147483647
+		,112746],[0,2147483647,0],0,0,84,5.90000000e+001,2.05000000e+001,0.00000000e+000,0.00000000e+000
+		,0.00000000e+000,0,0,1.25000000e+000,7.50000000e-001,0,[0.00000000e+000,0.00000000e+000,0.00000000e+000
+		,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
+		,0.00000000e+000],[0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
+		,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000],10,10,[0,10
+		,0],[0,10,0]]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="P_VALVE_STATISTICS">
+<DataValueMember Name="EnableIn" DataType="BOOL" Value="1"/>
+<DataValueMember Name="EnableOut" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Inp_InitializeReq" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Closed" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Inp_Opened" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_StopOther" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_HasStopOther" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Cfg_SlowOpenTime" DataType="REAL" Radix="Float" Value="5.0"/>
+<DataValueMember Name="Cfg_SlowCloseTime" DataType="REAL" Radix="Float" Value="5.0"/>
+<DataValueMember Name="PCmd_ClearTotTimes" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PCmd_ClearMaxTimes" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PCmd_ClearStrokeCounts" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PCmd_ClearSlowCounts" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PCmd_ClearMAvgs" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Val_CurrClosedTime" DataType="REAL" Radix="Float" Value="30567.75"/>
+<DataValueMember Name="Val_LastClosedTime" DataType="REAL" Radix="Float" Value="20.5"/>
+<DataValueMember Name="Val_TotClosedTime" DataType="REAL" Radix="Float" Value="977.93134"/>
+<DataValueMember Name="Val_MaxClosedTime" DataType="REAL" Radix="Float" Value="171.18181"/>
+<DataValueMember Name="Val_CurrOpeningTime" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Val_LastOpeningTime" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Val_TotOpeningTime" DataType="REAL" Radix="Float" Value="0.010971666"/>
+<DataValueMember Name="Val_MaxOpeningTime" DataType="REAL" Radix="Float" Value="1.25"/>
+<DataValueMember Name="Val_MAvgOpeningTime" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Val_CurrOpenedTime" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Val_LastOpenedTime" DataType="REAL" Radix="Float" Value="59.0"/>
+<DataValueMember Name="Val_TotOpenedTime" DataType="REAL" Radix="Float" Value="20.755001"/>
+<DataValueMember Name="Val_MaxOpenedTime" DataType="REAL" Radix="Float" Value="10.893056"/>
+<DataValueMember Name="Val_CurrClosingTime" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Val_LastClosingTime" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Val_TotClosingTime" DataType="REAL" Radix="Float" Value="0.010416111"/>
+<DataValueMember Name="Val_MaxClosingTime" DataType="REAL" Radix="Float" Value="0.75"/>
+<DataValueMember Name="Val_MAvgClosingTime" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Val_CurrStopOtherTime" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Val_LastStopOtherTime" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Val_TotStopOtherTime" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Val_MaxStopOtherTime" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Val_CpltOpenCount" DataType="DINT" Radix="Decimal" Value="91"/>
+<DataValueMember Name="Val_CpltCloseCount" DataType="DINT" Radix="Decimal" Value="90"/>
+<DataValueMember Name="Val_IncpltOpenCount" DataType="DINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="Val_IncpltCloseCount" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Val_StopOtherCount" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Val_SlowOpenCount" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Val_SlowCloseCount" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Sts_Initialized" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Sts_SlowOpen" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_SlowClose" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_Err" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_ErrSlowCloseTime" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sts_ErrSlowOpenTime" DataType="BOOL" Value="0"/>
+</Structure>
+</Data>
+</Tag>
+</Tags>
+<Programs Use="Context">
+<Program Use="Context" Name="R6_ControlModules">
+<Tags Use="Context">
+<Tag Name="YV_03217_Config" TagType="Base" DataType="AZ_PD4SD_Config" Usage="Public" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[[3,0,0.00000000e+000,0,0,0,0,0]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="AZ_PD4SD_Config">
+<DataValueMember Name="EnableIn" DataType="BOOL" Value="1"/>
+<DataValueMember Name="EnableOut" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Sav_NumStates" DataType="SINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Sav_FailTime" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Sav_ePwrUpState" DataType="SINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Cmd_Init" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Horn" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sav_Audible" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Sav_FeedbackA" DataType="SINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Sav_FeedbackB" DataType="SINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Sav_UseFdbkB" DataType="SINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Sav_UseFdbkA" DataType="SINT" Radix="Decimal" Value="0"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="YV_03217_Out" TagType="Base" DataType="BOOL" Radix="Decimal" Usage="Public" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="YV_03217_OutFault" TagType="Base" DataType="BOOL" Radix="Decimal" Usage="Public" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="YV_03217_PosA" TagType="Base" DataType="BOOL" Radix="Decimal" Usage="Public" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="YV_03217_PosAFault" TagType="Base" DataType="BOOL" Radix="Decimal" Usage="Public" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="YV_03217_PosB" TagType="Base" DataType="BOOL" Radix="Decimal" Usage="Public" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="YV_03217_PosBFault" TagType="Base" DataType="BOOL" Radix="Decimal" Usage="Public" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+</Tags>
+<Routines Use="Context">
+<Routine Use="Target" Name="YV_03217" Type="FBD">
+<FBDContent SheetSize="B - 11 x 17 in" SheetOrientation="Landscape">
+<Sheet Number="1">
+<IRef ID="0" X="460" Y="620" Operand="YV_03217_OutFault" HideDesc="false"/>
+<IRef ID="1" X="480" Y="200" Operand="YV_03217_PosA" HideDesc="false"/>
+<IRef ID="2" X="460" Y="580" Operand="YV_03217_PosAFault" HideDesc="false"/>
+<IRef ID="3" X="480" Y="220" Operand="YV_03217_PosB" HideDesc="false"/>
+<IRef ID="4" X="460" Y="600" Operand="YV_03217_PosBFault" HideDesc="false"/>
+<ORef ID="5" X="1020" Y="200" Operand="YV_03217_Out" HideDesc="false"/>
+<ICon ID="6" X="580" Y="240" Name="IO_Fault"/>
+<OCon ID="7" X="800" Y="600" Name="IO_Fault"/>
+<Block Type="PD4SD" ID="8" X="640" Y="140" Operand="YV_03217" VisiblePins="Inp_AFdbkData Inp_BFdbkData Inp_IOFault Inp_IntlkOK Inp_NBIntlkOK Out_AData Out_BData Sts_St0 Sts_St1 Sts_Prog Sts_Oper Sts_Alm BusObj" HideDesc="false">
+<Array Name="BusObj" Operand="0"/>
+</Block>
+<Block Type="PINTLK" ID="9" X="360" Y="320" Operand="YV_03217_Intlk_0" VisiblePins="Sts_IntlkOK Sts_NBIntlkOK Ref_IntlkBankSts" HideDesc="false">
+<Array Name="Ref_IntlkBankSts" Operand="0"/>
+</Block>
+<Block Type="PVLVS" ID="10" X="900" Y="240" Operand="YV_03217_ValveStats" VisiblePins="Inp_Closed Inp_Opened" HideDesc="false"/>
+<Function Type="BOR__F" ID="11" X="520" Y="580"/>
+<Function Type="BOR__F" ID="12" X="660" Y="600"/>
+<Function Type="BOR__F" ID="13" X="900" Y="200"/>
+<AddOnInstruction Name="AZ_PD4SD_Config" ID="14" X="0" Y="260" Operand="YV_03217_Config" VisiblePins="ToCM_NumStates ToCM_FailTime ToCM_ePwrUpState FromCM_Alm ToCM_FeedbackA ToCM_FeedbackB ToCM_UseFeedbackA ToCM_UseFeedbackB">
+<InOutParameter Name="FromCM_Alm" Argument="YV_03217.Sts_Alm"/>
+<InOutParameter Name="ToCM_FailTime" Argument="YV_03217.Cfg_FailTime"/>
+<InOutParameter Name="ToCM_FeedbackA" Argument="YV_03217.Cfg_bSt0FdbkState"/>
+<InOutParameter Name="ToCM_FeedbackB" Argument="YV_03217.Cfg_bSt1FdbkState"/>
+<InOutParameter Name="ToCM_NumStates" Argument="YV_03217.Cfg_NumStates"/>
+<InOutParameter Name="ToCM_UseFeedbackA" Argument="YV_03217.Cfg_bSt0FdbkCheck"/>
+<InOutParameter Name="ToCM_UseFeedbackB" Argument="YV_03217.Cfg_bSt1FdbkCheck"/>
+<InOutParameter Name="ToCM_ePwrUpState" Argument="YV_03217.Cfg_ePwrUpState"/>
+</AddOnInstruction>
+<Wire FromID="0" ToID="12" ToParam="In2"/>
+<Wire FromID="1" ToID="8" ToParam="Inp_AFdbkData"/>
+<Wire FromID="2" ToID="11" ToParam="In1"/>
+<Wire FromID="3" ToID="8" ToParam="Inp_BFdbkData"/>
+<Wire FromID="4" ToID="11" ToParam="In2"/>
+<Wire FromID="6" ToID="8" ToParam="Inp_IOFault"/>
+<Wire FromID="8" FromParam="Sts_St0" ToID="10" ToParam="Inp_Closed"/>
+<Wire FromID="8" FromParam="Sts_St1" ToID="10" ToParam="Inp_Opened"/>
+<Wire FromID="8" FromParam="Out_AData" ToID="13" ToParam="In1"/>
+<Wire FromID="8" FromParam="Out_BData" ToID="13" ToParam="In2"/>
+<Wire FromID="9" FromParam="Sts_IntlkOK" ToID="8" ToParam="Inp_IntlkOK"/>
+<Wire FromID="9" FromParam="Sts_NBIntlkOK" ToID="8" ToParam="Inp_NBIntlkOK"/>
+<Wire FromID="11" FromParam="Out" ToID="12" ToParam="In1"/>
+<Wire FromID="12" FromParam="Out" ToID="7"/>
+<Wire FromID="13" FromParam="Out" ToID="5"/>
+<TextBox ID="15" X="0" Y="0" Width="0">
+<Text>
+<![CDATA[--------------------------------------------
+Valve Control Module
+(Single Solenoid - Three Way Diverter Valve)
+Object: AZ_PD4SD
+Ver: 1
+--------------------------------------------]]>
+</Text>
+</TextBox>
+<TextBox ID="16" X="0" Y="140" Width="0">
+<Text>
+<![CDATA[Sav parameters are saved in this block
+and passed on to PD4SD block when 
+Cmd_Init is triggered
+
+Use Cmd_Init to reset PD4SD to default (Sav) 
+parameters]]>
+</Text>
+</TextBox>
+<TextBox ID="17" X="320" Y="500" Width="0">
+<Text>
+<![CDATA[Map the Digital I/O Fault bits
+to the respective _PosAFault,
+_PosBFault and _OutFault tags]]>
+</Text>
+</TextBox>
+<TextBox ID="18" X="340" Y="100" Width="0">
+<Text>
+<![CDATA[Map the Digital Input points
+to the respective _PosA
+and _PosB tags]]>
+</Text>
+</TextBox>
+<TextBox ID="19" X="640" Y="40" Width="0">
+<Text>
+<![CDATA[Cfg parameters should be set in
+AZ_PD4SD_Config Block
+
+Set HMI Parameters in PVLV 
+Block]]>
+</Text>
+</TextBox>
+<TextBox ID="20" X="1020" Y="120" Width="0">
+<Text>
+<![CDATA[Map the Digital Output point
+to the _Out tag]]>
+</Text>
+</TextBox>
+<Attachment FromID="16" ToID="14"/>
+<Attachment FromID="17" ToID="2"/>
+<Attachment FromID="18" ToID="1"/>
+<Attachment FromID="19" ToID="8"/>
+<Attachment FromID="20" ToID="5"/>
+</Sheet>
+</FBDContent>
+</Routine>
+</Routines>
+</Program>
+</Programs>
+</Controller>
+</RSLogix5000Content>

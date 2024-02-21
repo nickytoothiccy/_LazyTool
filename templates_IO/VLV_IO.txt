@@ -1,0 +1,3 @@
+\ControlModules.VLV_IO_Pos1 := MM_VLV_IO_Pos1;
+\ControlModules.VLV_IO_Pos2 := MM_VLV_IO_Pos2;
+MM_VLV_IO_Out := \ControlModules.VLV_IO_Out;
